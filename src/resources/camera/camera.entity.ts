@@ -5,9 +5,9 @@ export class Camera {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column()
-  lat: string
+  @Column({ type: 'float' })
+  lat: number
 
-  @Column()
-  lon: string
+  @Column({ type: 'float' })
+  lon: number
 }
