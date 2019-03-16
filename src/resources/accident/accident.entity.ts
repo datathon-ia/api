@@ -28,6 +28,6 @@ export class Accident {
   })
   vehicles: Vehicle[]
 
-  @CreateDateColumn({ select: false })
+  @CreateDateColumn()
   createdAt: Date
 }
