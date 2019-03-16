@@ -7,6 +7,7 @@ import {
   ValidationPipe,
   Get,
   Param,
+  Put,
 } from '@nestjs/common'
 import { AccidentDto } from '../../common/dtos/accident.dto'
 import { AccidentService } from '../../common/services/accident.service'
@@ -34,5 +35,10 @@ export class AccidentController {
     accidentDto: AccidentDto,
   ) {
     return this.accidentService.store(accidentDto)
+  }
+
+  @Put('/:id/close')
+  public async close(@Param() id: number) {
+    return await this.accidentService.close(id)
   }
 }

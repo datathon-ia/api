@@ -51,4 +51,17 @@ export class AccidentService {
 
     return accident
   }
+
+  async close(id: number): Promise<Accident> {
+    const accidentRepository = getConnection().getRepository(Accident)
+    const accident = await accidentRepository.findOne(id)
+    if (!accident) {
+      throw new NotFoundException()
+    }
+    accident.closed = true
+
+    accidentRepository.save(accident)
+
+    return accident
+  }
 }

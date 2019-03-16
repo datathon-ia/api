@@ -17,6 +17,9 @@ export class Accident {
   @Column({ type: 'longtext' })
   image: string
 
+  @Column({ type: 'tinyint' })
+  closed: boolean
+
   @ManyToOne(type => Camera, {
     eager: true,
   })
