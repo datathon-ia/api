@@ -1,15 +1,15 @@
-import { IsNotEmpty, IsString, IsNumber, IsArray } from 'class-validator'
-import { Vehicle } from '../../resources/vehicle/vehicle.entity'
+import { IsNotEmpty, IsString, IsArray, IsOptional } from 'class-validator'
 
-export class ContactDto {
+export class AccidentDto {
   @IsNotEmpty()
-  @IsNumber()
-  readonly cameraId
+  @IsString()
+  readonly cameraId: number
 
   @IsNotEmpty()
   @IsString()
-  readonly thumbnail: string
+  readonly image: string
 
+  @IsOptional()
   @IsArray()
-  readonly vehicle: Vehicle[]
+  readonly vehicleNames: string[]
 }

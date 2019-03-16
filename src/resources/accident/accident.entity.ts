@@ -4,8 +4,7 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   ManyToOne,
-  ManyToMany,
-  JoinTable,
+  OneToMany,
 } from 'typeorm'
 import { Camera } from '../camera/camera.entity'
 import { Vehicle } from '../vehicle/vehicle.entity'
@@ -15,7 +14,7 @@ export class Accident {
   @PrimaryGeneratedColumn()
   id: number
 
-  @Column()
+  @Column({ type: 'longtext' })
   image: string
 
   @ManyToOne(type => Camera, {
@@ -23,11 +22,10 @@ export class Accident {
   })
   camera: Camera
 
-  @ManyToMany(type => Vehicle, vehicle => vehicle.accidents, {
+  @OneToMany(type => Vehicle, vehicle => vehicle.accident, {
     cascade: true,
     eager: true,
   })
-  @JoinTable()
   vehicles: Vehicle[]
 
   @CreateDateColumn({ select: false })

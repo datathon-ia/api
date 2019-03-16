@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm'
 import { Accident } from '../accident/accident.entity'
 
 @Entity()
@@ -9,6 +9,6 @@ export class Vehicle {
   @Column()
   name: string
 
-  @ManyToMany(type => Accident, accident => accident.vehicles)
-  accidents: Accident[]
+  @ManyToOne(type => Accident, accident => accident.vehicles)
+  accident: Accident
 }
